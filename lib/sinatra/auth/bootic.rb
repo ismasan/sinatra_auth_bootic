@@ -57,6 +57,7 @@ module Sinatra
         #
         # Supports a variety of methods, name, full_name, email, etc
         def bootic_user
+          raise RestClient::Unauthorized, "No User" unless warden.user
           warden.user
         end
 
