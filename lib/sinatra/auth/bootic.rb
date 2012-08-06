@@ -70,7 +70,7 @@ module Sinatra
         #   bootic_raw_request("/products")
         #   # => RestClient::Response
         def bootic_raw_request(path, params = {})
-          RestClient.get("#{API_URL}/#{path}", :params => { :access_token => bootic_user.token }.merge(params), :accept => :json)
+          RestClient.get("#{API_URL}/#{path}", :params => { :access_token => bootic_user.token }.merge(params), :accept => :json, 'User-Agent' => 'Sinatra Auth Bootic', 'Accept-Encoding' => 'gzip')
         end
 
         # Send a V3 API GET request to path and JSON parse the response body
